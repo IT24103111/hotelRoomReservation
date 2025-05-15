@@ -49,8 +49,8 @@
                 <h3>Menu Varieties</h3>
                 <ul id="foodList">
                     <%
-                        List<FoodItem> foodItems = FoodFileHandler.readFoodItems();
-                        for (FoodItem item : foodItems) {
+                        List<foodItem> foodItems = foodFileHandler.readFoodItems();
+                        for (foodItem item : foodItems) {
                     %>
                     <li class="food__item">
                         <span class="food__name"><%= item.getName() %></span>
@@ -64,7 +64,7 @@
             <!-- Right Side: Photos -->
             <div class="menu__photos">
                 <%
-                    for (fooditem item : foodItems) {
+                    for (FoodItem item : foodItems) {
                         if (!item.getImagePath().isEmpty()) {
                 %>
                 <div class="photo__item">

@@ -1,104 +1,46 @@
 package lk.sliit.hotelroomreservation.foodmenu;
 
-
-
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.MultipartConfig;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
-
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/admin-food-menu")
-@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
-        maxFileSize = 1024 * 1024 * 10, // 10MB
-        maxRequestSize = 1024 * 1024 * 50) // 50MB
-public class AdminFoodServlet extends HttpServlet {
-    private static final String UPLOAD_DIR = "images";
+public class foodFileHandler {
+    private static final String FOOD_FILE = "food-items.txt";
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.getRequestDispatcher("/admin/admin-food-menu.jsp").forward(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String action = request.getParameter("action");
-
-        if ("add".equals(action)) {
-            String name = request.getParameter("name");
-            double price = Double.parseDouble(request.getParameter("price"));
-            Part filePart = request.getPart("imageFile");
-            String imagePath = "";
-            if (filePart != null && filePart.getSize() > 0) {
-                String fileName = extractFileName(filePart);
-                String applicationPath = request.getServletContext().getRealPath("");
-                String uploadPath = applicationPath + File.separator + UPLOAD_DIR;
-                File uploadDir = new File(uploadPath);
-                if (!uploadDir.exists()) {
-                    uploadDir.mkdir();
-                }
-                String filePath = uploadPath + File.separator + fileName;
-                filePart.write(filePath);
-                imagePath = UPLOAD_DIR + "/" + fileName;
+    public static void writeFoodItems(List<foodItem> foodItems) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FOOD_FILE))) {
+            for (foodItem item : foodItems) {
+                writer.write(item.toString());
+                writer.newLine();
             }
-
-            List<FoodItem> foodItems = FoodFileHandler.readFoodItems();
-            foodItems.add(new FoodItem(name, price, imagePath));
-            FoodFileHandler.writeFoodItems(foodItems);
-
-            response.sendRedirect("admin-food-menu.jsp");
-
-        } else if ("update".equals(action)) {
-            String name = request.getParameter("name");
-            double price = Double.parseDouble(request.getParameter("price"));
-            Part filePart = request.getPart("imageFile");
-            List<FoodItem> foodItems = FoodFileHandler.readFoodItems();
-            for (FoodItem item : foodItems) {
-                if (item.getName().equals(name)) {
-                    item.setPrice(price);
-                    if (filePart != null && filePart.getSize() > 0) {
-                        String fileName = extractFileName(filePart);
-                        String applicationPath = request.getServletContext().getRealPath("");
-                        String uploadPath = applicationPath + File.separator + UPLOAD_DIR;
-                        File uploadDir = new File(uploadPath);
-                        if (!uploadDir.exists()) {
-                            uploadDir.mkdir();
-                        }
-                        String filePath = uploadPath + File.separator + fileName;
-                        filePart.write(filePath);
-                        item.setImagePath(UPLOAD_DIR + "/" + fileName);
-                    }
-                    break;
-                }
-            }
-            FoodFileHandler.writeFoodItems(foodItems);
-            response.sendRedirect("admin-food-menu.jsp");
-
-        } else if ("delete".equals(action)) {
-            String name = request.getParameter("name");
-            List<FoodItem> foodItems = FoodFileHandler.readFoodItems();
-            foodItems.removeIf(item -> item.getName().equals(name));
-            FoodFileHandler.writeFoodItems(foodItems);
-            response.sendRedirect("admin-food-menu.jsp");
         }
     }
 
-    private String extractFileName(Part part) {
-        String contentDisposition = part.getHeader("content-disposition");
-        String[] items = contentDisposition.split(";");
-        for (String item : items) {
-            if (item.trim().startsWith("filename")) {
-                return System.currentTimeMillis() + "_" + item.substring(item.indexOf("=") + 2, item.length() - 1);
+    public static List<foodItem> readFoodItems() throws IOException {
+        List<foodItem> foodItems = new ArrayList<>();
+        File file = new File(FOOD_FILE);
+        if (!file.exists()) {
+            // Initialize with default food items if the file doesn't exist
+            foodItems.add(new foodItem("Continental Breakfast", 12.0, "images/S1.jpg"));
+            foodItems.add(new foodItem("Grilled Chicken Salad", 15.0, "images/S2.jpg"));
+            foodItems.add(new foodItem("Pasta Primavera", 18.0, ""));
+            foodItems.add(new foodItem("Seafood Platter", 25.0, "images/S3.jpg"));
+            foodItems.add(new foodItem("Chocolate Lava Cake", 8.0, ""));
+            writeFoodItems(foodItems);
+        }
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",", 3);
+                if (parts.length == 3) {
+                    String name = parts[0];
+                    double price = Double.parseDouble(parts[1]);
+                    String imagePath = parts[2];
+                    foodItems.add(new foodItem(name, price, imagePath));
+                }
             }
         }
-        return "";
+        return foodItems;
     }
 }

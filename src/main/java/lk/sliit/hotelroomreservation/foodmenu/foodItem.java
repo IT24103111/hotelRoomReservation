@@ -1,12 +1,12 @@
 package lk.sliit.hotelroomreservation.foodmenu;
 
 
-public class FoodItem {
+public class foodItem {
     private String name;
     private double price;
     private String imagePath;
 
-    public FoodItem(String name, double price, String imagePath) {
+    public foodItem(String name, double price, String imagePath) {
         this.name = name;
         this.price = price;
         this.imagePath = imagePath;

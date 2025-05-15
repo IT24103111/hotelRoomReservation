@@ -48,9 +48,9 @@ public class AdminFoodServlet extends HttpServlet {
                 imagePath = UPLOAD_DIR + "/" + fileName;
             }
 
-            List<FoodItem> foodItems = FoodFileHandler.readFoodItems();
-            foodItems.add(new FoodItem(name, price, imagePath));
-            FoodFileHandler.writeFoodItems(foodItems);
+            List<foodItem> foodItems = foodFileHandler.readFoodItems();
+            foodItems.add(new foodItem(name, price, imagePath));
+            foodFileHandler.writeFoodItems(foodItems);
 
             response.sendRedirect("admin-food-menu.jsp");
 
@@ -58,8 +58,8 @@ public class AdminFoodServlet extends HttpServlet {
             String name = request.getParameter("name");
             double price = Double.parseDouble(request.getParameter("price"));
             Part filePart = request.getPart("imageFile");
-            List<FoodItem> foodItems = FoodFileHandler.readFoodItems();
-            for (FoodItem item : foodItems) {
+            List<foodItem> foodItems = foodFileHandler.readFoodItems();
+            for (foodItem item : foodItems) {
                 if (item.getName().equals(name)) {
                     item.setPrice(price);
                     if (filePart != null && filePart.getSize() > 0) {
@@ -77,14 +77,14 @@ public class AdminFoodServlet extends HttpServlet {
                     break;
                 }
             }
-            FoodFileHandler.writeFoodItems(foodItems);
+            foodFileHandler.writeFoodItems(foodItems);
             response.sendRedirect("admin-food-menu.jsp");
 
         } else if ("delete".equals(action)) {
             String name = request.getParameter("name");
-            List<FoodItem> foodItems = FoodFileHandler.readFoodItems();
+            List<foodItem> foodItems = foodFileHandler.readFoodItems();
             foodItems.removeIf(item -> item.getName().equals(name));
-            FoodFileHandler.writeFoodItems(foodItems);
+            foodFileHandler.writeFoodItems(foodItems);
             response.sendRedirect("admin-food-menu.jsp");
         }
     }
