@@ -48,7 +48,7 @@
         <div class="bg-indigo-600 h-48 relative">
             <div class="absolute bottom-0 left-0 w-full transform translate-y-1/2 flex justify-center">
                 <div class="h-32 w-32 rounded-full border-4 border-white overflow-hidden bg-white">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" class="h-full w-full object-cover">
+                    <img src="https://th.bing.com/th/id/OIP.lcdOc6CAIpbvYx3XHfoJ0gHaF3?cb=iwc2&rs=1&pid=ImgDetMain" alt="Profile" class="h-full w-full object-cover">
                 </div>
             </div>
         </div>

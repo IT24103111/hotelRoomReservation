@@ -30,6 +30,7 @@
             <div class="flex items-center space-x-4">
                 <a href="#" class="text-gray-700 hover:text-indigo-600">Home</a>
                 <a href="#" class="text-gray-700 hover:text-indigo-600">Rooms</a>
+                <a href="#" class="text-gray-700 hover:text-indigo-600">Menu</a>
                 <a href="#" class="text-gray-700 hover:text-indigo-600">About</a>
                 <a href="#" class="text-gray-700 hover:text-indigo-600">Contact</a>
                 <a href="login.html" class="text-gray-700 hover:text-indigo-600">Login</a>
