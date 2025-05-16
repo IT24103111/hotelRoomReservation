@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="lk.sliit.hotelroomreservation.foodmenu" %>
-<%@ page import="lk.sliit.hotelroomreservation.foodmenu" %>
+<%@ page import="lk.sliit.hotelroomreservation.foodmenu.foodItem" %>
 <%@ page import="java.util.List" %>
+<%@ page import="lk.sliit.hotelroomreservation.foodmenu.foodFileHandler" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +14,7 @@
 <body>
 <div class="admin__container">
     <header class="admin__header">
-        <h1 class="logo">Hotel Miranda - Manage Food Menu</h1>
+        <h1 class="logo">Hotel Miranda—Manage Food Menu</h1>
         <a href="admin-dashboard.jsp" class="back__btn">Back to Admin Dashboard</a>
     </header>
 
@@ -55,15 +55,15 @@
                 String error = null;
                 List<foodItem> foodItems = null;
                 try {
-                    foodItems = foodFileHandler.readFoodItems();
+                    Object FoodItems = foodFileHandler.readFoodItems();
                     if (foodItems.isEmpty()) {
             %>
             <tr>
-                <td colspan="4" class="no-data">No food items found.</td>
+                <td colspan="4" class="no-data">No food items were found.</td>
             </tr>
             <%
             } else {
-                for (FoodItem item : foodItems) {
+                for (foodItem item : foodItems) {
             %>
             <tr>
                 <td>
@@ -100,11 +100,12 @@
         <!-- Edit Food Item Form (Hidden by Default) -->
         <%
             String editName = request.getParameter("editName");
-            FoodItem editItem = null;
+            foodItem editItem = null;
             if (editName != null) {
                 try {
-                    List<FoodItem> items = FoodFileHandler.readFoodItems();
-                    for (FoodItem item : items) {
+                    List<foodItem> items = foodFileHandler.readFoodItems();
+
+                    for (foodItem item : items) {
                         if (item.getName().equals(editName)) {
                             editItem = item;
                             break;
