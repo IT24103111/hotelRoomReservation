@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class foodFileHandler {
-    private static final String FOOD_FILE = "food-items.txt";
+    private static final String FOOD_FILE = "C:\\Users\\LENOVO\\IdeaProjects\\hotelRoomReservation\\src\\main\\webapp\\food-items.txt";
 
     public static void writeFoodItems(List<foodItem> foodItems) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FOOD_FILE))) {
