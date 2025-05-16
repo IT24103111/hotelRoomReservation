@@ -6,6 +6,7 @@ public class foodItem {
     private double price;
     private String imagePath;
 
+
     public foodItem(String name, double price, String imagePath) {
         this.name = name;
         this.price = price;
