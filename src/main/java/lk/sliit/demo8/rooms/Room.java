@@ -12,7 +12,7 @@ public class Room {
         this.description = description;
         this.imagePath = imagePath;
     }
-    
+
     public String getName() {
         return name;
     }
