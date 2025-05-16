@@ -1,4 +1,4 @@
-package lk.sliit.demo8.news;
+package lk.sliit.hotelroomreservation;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

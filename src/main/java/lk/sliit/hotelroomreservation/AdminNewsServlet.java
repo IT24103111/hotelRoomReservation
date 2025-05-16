@@ -1,4 +1,4 @@
-package lk.sliit.hotelroomreservation.news;
+package lk.sliit.hotelroomreservation;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -29,7 +29,7 @@ public class AdminNewsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("newsItems", lk.sliit.demo8.news.NewsFileHandler.readNewsItems());
+        request.setAttribute("newsItems", lk.sliit.hotelroomreservation.NewsFileHandler.readNewsItems());
         request.getRequestDispatcher("/admin/admin-news.jsp").forward(request, response);
     }
 

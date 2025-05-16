@@ -1,4 +1,4 @@
-package lk.sliit.demo8.news;
+package lk.sliit.hotelroomreservation;
 
 import com.google.gson.Gson;
 import jakarta.servlet.ServletException;

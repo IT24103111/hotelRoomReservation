@@ -1,4 +1,4 @@
-package lk.sliit.demo8.news;
+package lk.sliit.hotelroomreservation;
 
 public class NewsItem {
     private String title;
@@ -11,6 +11,7 @@ public class NewsItem {
         this.date = date != null ? date : "";
         this.description = description != null ? description : "";
         this.imagePath = imagePath != null ? imagePath : "";
+
     }
 
     public String getTitle() { return title; }

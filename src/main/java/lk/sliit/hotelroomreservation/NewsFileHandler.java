@@ -1,4 +1,4 @@
-package lk.sliit.demo8.news;
+package lk.sliit.hotelroomreservation;
 
 import java.io.*;
 import java.util.ArrayList;
