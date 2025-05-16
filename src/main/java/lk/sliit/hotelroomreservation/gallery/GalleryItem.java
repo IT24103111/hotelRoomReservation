@@ -1,8 +1,6 @@
 package lk.sliit.hotelroomreservation.gallery;
-
-public class GalleryItem{
-}
-    private String imagePath;
+public class GalleryItem {
+private String imagePath;
     private String caption;
 
     public GalleryItem(String imagePath, String caption) {

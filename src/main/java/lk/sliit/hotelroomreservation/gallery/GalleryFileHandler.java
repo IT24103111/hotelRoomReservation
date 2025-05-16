@@ -4,20 +4,21 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GalleryFileHandler {
 
-private static final String GALLERY_FILE = "gallery.txt";
+public class GalleryFileHandler {
+    private static final String GALLERY_FILE = "gallery.txt";
 
     public static void writeGalleryItems(List<GalleryItem> items) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(GALLERY_FILE))) {
             for (GalleryItem item : items) {
                 writer.write(item.toString());
                 writer.newLine();
+
             }
         }
     }
 
-    public static List<GalleryItem> readGalleryItems() throws IOException {
+    public  static List<GalleryItem> readGalleryItems() throws IOException {
         List<GalleryItem> items = new ArrayList<>();
         File file = new File(GALLERY_FILE);
         if (!file.exists()) {

@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="lk.sliit.demo8.gallery.GalleryFileHandler" %>
-<%@ page import="lk.sliit.demo8.gallery.GalleryItem" %>
+<%@ page import="java.util.List" %>
+<%@ page import="lk.sliit.hotelroomreservation.gallery.GalleryItem" %>
+<%@ page import="lk.sliit.hotelroomreservation.gallery.GalleryFileHandler" %>
 <%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
