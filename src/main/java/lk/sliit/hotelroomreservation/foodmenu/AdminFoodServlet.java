@@ -89,7 +89,6 @@ public class AdminFoodServlet extends HttpServlet {
         }
     }
 
-
     private String extractFileName(Part part) {
         String contentDisposition = part.getHeader("content-disposition");
         String[] items = contentDisposition.split(";");

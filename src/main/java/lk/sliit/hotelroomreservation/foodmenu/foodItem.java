@@ -1,7 +1,6 @@
 package lk.sliit.hotelroomreservation.foodmenu;
 
 
-
 public class foodItem {
     private String name;
     private double price;
