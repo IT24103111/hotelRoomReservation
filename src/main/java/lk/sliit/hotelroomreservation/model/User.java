@@ -12,6 +12,7 @@ public class User implements Serializable {
     private String address;
     private String travelPreference;
     
+    //constructors 
     public User() {}
     
     public User(String firstName, String lastName, String email, String phone, String password) {
@@ -38,7 +39,7 @@ public class User implements Serializable {
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
     
-    // Additional getters and setters
+    // other getter and setter part 
     public String getDob() { return dob; }
     public void setDob(String dob) { this.dob = dob; }
     
