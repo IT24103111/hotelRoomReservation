@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
-<%@ page import="lk.sliit.demo8.news.NewsItem" %>
-<%@ page import="lk.sliit.demo8.news.NewsFileHandler" %>
+<%@ page import="lk.sliit.hotelroomreservation.NewsItem" %>
+<%@ page import="lk.sliit.hotelroomreservation.NewsFileHandler" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
