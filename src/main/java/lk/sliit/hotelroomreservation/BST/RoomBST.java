@@ -3,17 +3,17 @@ package lk.sliit.demo8.BST;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoomBST {
-    private BSTNode root;
+public class    RoomBST {
+    private lk.sliit.demo8.BST.BSTNode root;
 
     // Insert a new room into the BST
-    public void insert(Room room) {
+    public void insert(lk.sliit.demo8.BST.Room room) {
         root = insertRec(root, room);
     }
 
-    private BSTNode insertRec(BSTNode root, Room room) {
+    private lk.sliit.demo8.BST.BSTNode insertRec(lk.sliit.demo8.BST.BSTNode root, lk.sliit.demo8.BST.Room room) {
         if (root == null) {
-            root = new BSTNode(room);
+            root = new lk.sliit.demo8.BST.BSTNode(room);
             return root;
         }
 
@@ -27,11 +27,11 @@ public class RoomBST {
     }
 
     // Search for a room by room number
-    public Room search(int roomNumber) {
+    public lk.sliit.demo8.BST.Room search(int roomNumber) {
         return searchRec(root, roomNumber);
     }
 
-    private Room searchRec(BSTNode root, int roomNumber) {
+    private lk.sliit.demo8.BST.Room searchRec(lk.sliit.demo8.BST.BSTNode root, int roomNumber) {
         if (root == null || root.room.getRoomNumber() == roomNumber) {
             return root == null ? null : root.room;
         }
@@ -44,13 +44,13 @@ public class RoomBST {
     }
 
     // Find all available rooms of a specific type
-    public List<Room> findAvailableRooms(String roomType) {
-        List<Room> availableRooms = new ArrayList<>();
+    public List<lk.sliit.demo8.BST.Room> findAvailableRooms(String roomType) {
+        List<lk.sliit.demo8.BST.Room> availableRooms = new ArrayList<>();
         findAvailableRoomsRec(root, roomType, availableRooms);
         return availableRooms;
     }
 
-    private void findAvailableRoomsRec(BSTNode root, String roomType, List<Room> result) {
+    private void findAvailableRoomsRec(lk.sliit.demo8.BST.BSTNode root, String roomType, List<lk.sliit.demo8.BST.Room> result) {
         if (root != null) {
             findAvailableRoomsRec(root.left, roomType, result);
             if (root.room.isAvailable() &&
@@ -63,7 +63,7 @@ public class RoomBST {
 
     // Mark a room as occupied
     public boolean bookRoom(int roomNumber) {
-        Room room = search(roomNumber);
+        lk.sliit.demo8.BST.Room room = search(roomNumber);
         if (room != null && room.isAvailable()) {
             room.setAvailable(false);
             return true;
@@ -73,7 +73,7 @@ public class RoomBST {
 
     // Mark a room as available
     public boolean checkOutRoom(int roomNumber) {
-        Room room = search(roomNumber);
+        lk.sliit.demo8.BST.Room room = search(roomNumber);
         if (room != null && !room.isAvailable()) {
             room.setAvailable(true);
             return true;
@@ -82,13 +82,13 @@ public class RoomBST {
     }
 
     // In-order traversal to get all rooms sorted by room number
-    public List<Room> getAllRooms() {
-        List<Room> rooms = new ArrayList<>();
+    public List<lk.sliit.demo8.BST.Room> getAllRooms() {
+        List<lk.sliit.demo8.BST.Room> rooms = new ArrayList<>();
         inOrderTraversal(root, rooms);
         return rooms;
     }
 
-    private void inOrderTraversal(BSTNode root, List<Room> result) {
+    private void inOrderTraversal(lk.sliit.demo8.BST.BSTNode root, List<lk.sliit.demo8.BST.Room> result) {
         if (root != null) {
             inOrderTraversal(root.left, result);
             result.add(root.room);
@@ -101,7 +101,7 @@ public class RoomBST {
         root = deleteRec(root, roomNumber);
     }
 
-    private BSTNode deleteRec(BSTNode root, int roomNumber) {
+    private lk.sliit.demo8.BST.BSTNode deleteRec(lk.sliit.demo8.BST.BSTNode root, int roomNumber) {
         if (root == null) return null;
 
         if (roomNumber < root.room.getRoomNumber()) {
@@ -126,8 +126,8 @@ public class RoomBST {
         return root;
     }
 
-    private Room minValue(BSTNode root) {
-        Room min = root.room;
+    private lk.sliit.demo8.BST.Room minValue(lk.sliit.demo8.BST.BSTNode root) {
+        lk.sliit.demo8.BST.Room min = root.room;
         while (root.left != null) {
             min = root.left.room;
             root = root.left;

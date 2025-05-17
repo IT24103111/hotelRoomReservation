@@ -1,28 +1,43 @@
-package lk.sliit.hotelroomreservation;
+package lk.sliit.demo8;
 
-import java.io.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
-
-@WebServlet(name = "helloServlet", value = "/hello-servlet")
+@WebServlet(name = "helloServlet", urlPatterns = "/room")
 public class HelloServlet extends HttpServlet {
-    private String message;
 
-    public void init() {
-        message = "Hello World!";
+    private static class RoomDisplay {
+        String name;
+        String description;
+        String imagePath;
+
+        RoomDisplay(String name, String description, String imagePath) {
+            this.name = name;
+            this.description = description;
+            this.imagePath = imagePath;
+        }
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
 
-        // Hello
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
-        out.println("</body></html>");
-    }
+        // Convert to display format for JSP
+        List<RoomDisplay> roomsToDisplay = Arrays.asList(
+                new RoomDisplay("Deluxe Suite", "Spacious suite with ocean view", "images/deluxe.jpg"),
+                new RoomDisplay("Standard Room", "Cozy room with city view", "images/standard.jpg"),
+                new RoomDisplay("Family Room", "Perfect for families with extra space", "images/family.jpg")
+        );
 
-    public void destroy() {
+        request.setAttribute("rooms", roomsToDisplay);
+        // Forward to ReservationServlet instead of directly to JSP
+        request.getRequestDispatcher("/reserve").forward(request, response);
     }
 }
