@@ -1,6 +1,5 @@
 package lk.sliit.demo8.rooms;
 
-
 public class Room {
     private String name;
     private double price;
