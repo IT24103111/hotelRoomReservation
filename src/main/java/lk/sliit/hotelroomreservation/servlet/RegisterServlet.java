@@ -63,11 +63,7 @@ public class RegisterServlet extends HttpServlet {
             request.getRequestDispatcher("signup.jsp").forward(request, response);
         }
     }
-
-    /**
-     * Validates user input for registration
-     * @return null if validation passes, error message otherwise
-     */
+    //check validation of user reggistration
     private String validateInput(String firstName, String lastName, String email, String phone,
                                 String password, String confirmPassword) {
         // Check for null or empty values
