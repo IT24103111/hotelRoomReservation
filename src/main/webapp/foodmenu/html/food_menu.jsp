@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- ... head section remains the same ... -->
-<link rel="stylesheet" href="<%=request.getContextPath()%>/foodmenu/css/food_menu.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/foodmenu/css/foodmenu.css">
 
 <body>
 <div class="home__container">
