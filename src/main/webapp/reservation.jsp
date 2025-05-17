@@ -1,5 +1,13 @@
-<%@ page import="lk.sliit.hotelroomreservation" %>
+<%@ page import="lk.sliit.demo8.BST.Room" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.Map" %>
+<%
+    // Redirect to /reserve if required attributes are not set
+    if (request.getAttribute("roomTypeCounts") == null || request.getAttribute("availableRooms") == null) {
+        response.sendRedirect(request.getContextPath() + "/reserve");
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +63,7 @@
                 Booking Details
             </h3>
 
-            <form id="reservationForm" action="reserve" method="post" class="space-y-6">
+            <form id="reservationForm" action="${pageContext.request.contextPath}/reserve" method="post" class="space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
@@ -76,9 +84,12 @@
                     <select id="roomType" name="roomType"
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent transition duration-200" required>
                         <option value="" disabled selected>Select a room</option>
-                        <option value="standard">Standard Room - $99/night</option>
-                        <option value="deluxe">Deluxe Room - $149/night</option>
-                        <option value="suite">Suite Room - $249/night</option>
+                        <%
+                            Map<String, Integer> roomTypeCounts = (Map<String, Integer>) request.getAttribute("roomTypeCounts");
+                        %>
+                        <option value="standard">Standard Room - $99/night (<%= roomTypeCounts.getOrDefault("standard", 0) %> available)</option>
+                        <option value="deluxe">Deluxe Room - $149/night (<%= roomTypeCounts.getOrDefault("deluxe", 0) %> available)</option>
+                        <option value="suite">Suite Room - $249/night (<%= roomTypeCounts.getOrDefault("suite", 0) %> available)</option>
                     </select>
                 </div>
 
@@ -102,7 +113,7 @@
                            placeholder="Enter number of guests" required>
                 </div>
 
-                <button type="submit"
+                <button type="submit" id="reserveButton"
                         class="w-full bg-accent hover:bg-secondary text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-[1.02] shadow-lg flex items-center justify-center">
                     <i class="ri-flashlight-line mr-2"></i> Reserve Now
                 </button>
@@ -200,7 +211,13 @@
         if (checkIn >= checkOut) {
             e.preventDefault();
             alert('Check-out date must be after check-in date');
+            return;
         }
+
+        // Disable the button to prevent multiple submissions
+        const reserveButton = document.getElementById('reserveButton');
+        reserveButton.disabled = true;
+        reserveButton.innerHTML = '<i class="ri-loader-line mr-2 animate-spin"></i> Processing...';
     });
 
     // Dynamic date restrictions
