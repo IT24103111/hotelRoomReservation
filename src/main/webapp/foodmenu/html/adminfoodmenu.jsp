@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Manage Food Menu</title>
-    <link rel="stylesheet" href="../css/admin-food-menu.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/foodmenu/css/adminfoodmenu.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>

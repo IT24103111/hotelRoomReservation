@@ -1,12 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="lk.sliit.hotelroomreservation.foodmenu" %>
-<%@ page import="lk.sliit.hotelroomreservation.foodmenu" %>
 <%@ page import="java.util.List" %>
 <%@ page import="lk.sliit.hotelroomreservation.foodmenu.foodFileHandler" %>
 <%@ page import="lk.sliit.hotelroomreservation.foodmenu.foodItem" %>
 <!DOCTYPE html>
 <html lang="en">
 <!-- ... head section remains the same ... -->
+<link rel="stylesheet" href="<%=request.getContextPath()%>/foodmenu/css/food_menu.css">
+
 <body>
 <div class="home__container">
     <!-- ... navigation section remains the same ... -->
