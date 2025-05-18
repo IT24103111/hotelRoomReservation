@@ -44,7 +44,7 @@
             <button type="submit" class="add__btn">Add Room</button>
         </form>
 
-        <!-- Rooms Table -->
+       
         <table>
             <thead>
             <tr>
@@ -97,7 +97,7 @@
         <p class="error"><%= error %></p>
         <% } %>
 
-        <!-- Edit Room Form (Hidden by Default) -->
+  
         <%
             String editName = request.getParameter("editName");
             Room editRoom = null;
