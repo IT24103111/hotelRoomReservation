@@ -21,7 +21,7 @@ public class RoomFileHandler {
         List<Room> rooms = new ArrayList<>();
         File file = new File(ROOMS_FILE);
         if (!file.exists()) {
-            // Initialize with default rooms if the file doesn't exist
+            
             rooms.add(new Room("Standard Room", 99.0, "A cozy room with essential amenities for a comfortable stay.", "images/R2.jpg"));
             rooms.add(new Room("Deluxe Room", 149.0, "Spacious and elegant with upgraded amenities and a scenic view.", "images/m3.jpg"));
             rooms.add(new Room("Suite Room", 249.0, "Luxurious suite with premium facilities and extra space.", "images/m4.jpg"));
