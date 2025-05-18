@@ -13,7 +13,6 @@ public class NewsFileHandler {
         NEWS_FILE_PATH = basePath + "/news.txt";
         ensureFileExists();
     }
-
     private static void ensureFileExists() {
         File file = new File(NEWS_FILE_PATH);
         if (!file.exists()) {

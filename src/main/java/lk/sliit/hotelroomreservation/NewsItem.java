@@ -13,7 +13,6 @@ public class NewsItem {
         this.imagePath = imagePath != null ? imagePath : "";
 
     }
-
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title != null ? title : ""; }
 
