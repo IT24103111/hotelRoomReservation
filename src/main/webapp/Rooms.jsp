@@ -17,7 +17,7 @@
         <h1 class="logo">Hotel Miranda</h1>
         <ul class="nav__links">
             <%
-                // Check if the user is logged in
+                
                 if (session != null && session.getAttribute("userEmail") != null) {
             %>
             <li><a href="profile.jsp" class="profile__btn">My Profile</a></li>
