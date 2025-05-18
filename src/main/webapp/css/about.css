@@ -100,19 +100,19 @@ body {
     background-color: #d48f00;
 }
 
-/* Responsive Design */
+
 @media (min-width: 768px) {
     .rooms__grid {
-        grid-template-columns: repeat(2, 1fr); /* Two columns for tablets */
+        grid-template-columns: repeat(2, 1fr); 
     }
 }
 
 @media (min-width: 1024px) {
     .rooms__grid {
-        grid-template-columns: repeat(3, 1fr); /* Three columns for desktops */
+        grid-template-columns: repeat(3, 1fr); 
     }
 
     .room__card img {
-        height: 250px; /* Larger images on desktop */
+        height: 250px; 
     }
 }
