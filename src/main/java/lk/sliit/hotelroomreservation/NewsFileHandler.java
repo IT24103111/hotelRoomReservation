@@ -57,7 +57,6 @@ public class NewsFileHandler {
         newsItems.removeIf(item -> item.getTitle().equals(title));
         writeNewsItems(newsItems);
     }
-
     private static void writeNewsItems(List<NewsItem> newsItems) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(NEWS_FILE_PATH))) {
             System.out.println(NEWS_FILE_PATH);
