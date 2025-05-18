@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #0d71d6;
+    min-height: 100vh;
+}
+
+.admin__container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.admin__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.back__btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: #f6ac0f;
+    border-radius: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.back__btn:hover {
+    background-color: #d48f00;
+}
+
+.admin__content {
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding: 2rem 1rem;
+}
+
+.section__header {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+}
+
+.section__subheader {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #64748b;
+    margin-bottom: 2rem;
+}
+
+.add__form, .edit__form {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.add__form h3, .edit__form h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 1rem;
+}
+
+.form__group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.form__group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+}
+
+.form__group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    color: #0f172a;
+    outline: none;
+}
+
+.form__group input:focus {
+    border-color: #f6ac0f;
+    box-shadow: 0 0 5px rgba(246, 172, 15, 0.3);
+}
+
+.add__btn, .update__btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: #f6ac0f;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.add__btn:hover, .update__btn:hover {
+    background-color: #d48f00;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    font-size: 0.9rem;
+    color: #0f172a;
+}
+
+th {
+    background-color: #f6ac0f;
+    color: #ffffff;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.thumbnail {
+    width: 100px;
+    height: auto;
+    border-radius: 0.5rem;
+}
+
+.no-data {
+    text-align: center;
+    color: #64748b;
+    font-style: italic;
+}
+
+.edit__btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: #f6ac0f;
+    border-radius: 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    margin-right: 0.5rem;
+}
+
+.edit__btn:hover {
+    background-color: #d48f00;
+}
+
+.delete__btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: #d32f2f;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.delete__btn:hover {
+    background-color: #b71c1c;
+}
+
+.error {
+    color: #d32f2f;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+}
